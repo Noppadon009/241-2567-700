@@ -6,22 +6,36 @@
     <title>Document</title>
 </head>
 <body>
-    <div>Hello World</div>
-    ชื่อ<input
-        id="firstname"
-        class="input"
-        type="text"
-        name="firstname"
-        value="Joness">
-    นามสกุล<input
-        id="lastname"
-        class="input"
-        type="text"
-        name="lastname"
-        value="Doe">    
+    <div>
+        <h2>สิ่งที่สนใจ</h2>
+        <div id = "content">
+    </div>
+   
+    </div>
+    <input type="checkbox" name="interest" value="กีฬา"> กีฬา
+    <input type="checkbox" name="interest" value="ดนตรี"> ดนตรี
+    <input type="checkbox" name="interest" value="อาหาร"> อาหาร
+    <input type="checkbox" name="interest" value="เทคโนโลยี"> เทคโนโลยี
+    <button onclick="SubmitInterrest()">แสดงสิ่งที่สนใจ</button>
     <script>
-        let inputsDOM = document.getElementsByClassName('.#firstname');
-        console.log(firstnameDom.value);     
+        function SubmitInterrest(){
+            // เลือก checkbox ทั้งหมด
+            let interest = document.querySelectorAll('input[name="interest"]');
+            let contentHTML = '<ul>';
+            // เอา ค่าvalue ออกมาเฉพาะที่เลือกใส่ใว้ที่ array
+            for (let i = 0; i < interest.length; i++) {
+                if (interest[i].checked) {
+                    contentHTML += '<li>' + interest[i].value + '</li>';
+                }
+            }
+            //วนค่าตัวที่เลือกใส่ html กลับไป
+            contentHTML += '</ul>';
+            console.log(contentHTML);
+
+            // ใส่ HTML ใน content
+            let contentDOM = document.getElementById('content');
+            contentDOM.innerHTML = contentHTML;
+        }
     </script>
 </body>
 </html>
