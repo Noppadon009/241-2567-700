@@ -1,28 +1,29 @@
-function submitData () {
-    let firstNameDOM = document.querySelector('input[name=firstname]');
-    let lastNameDOM = document.querySelector('input[name=lastname]');
-    let ageDOM = document.querySelector('input[name=age]');
-    let genderDOM = document.querySelector('input[name=gender]:checked');
-    let interestDOM = document.querySelectorAll('input[name=interest]:checked');
-    let descriptionDOM = document.querySelector('textarea[name=description]');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 
-    let interest = ''
-    for (let i = 0; i < interestDOM.length; i++){
-        interest += interestDOM[i].value 
-        if ( i != interestDOM.length - 1){
-            interest += ','
-        }
-        
-    }
-    
-    let userData = {
-        firstname: firstNameDOM.value,
-        lastname: lastNameDOM.value,
-        age: ageDOM.value,
-        gender: genderDOM.value,
-        description: descriptionDOM.value,
-        interest: interest
-        
-    }
-    console.log('submitData', userData);
-}
+const port = 8000;
+
+app.use(bodyParser.json());
+
+let users = []
+//path: /users ใช้สำหรับแสดงข้อมูล user ทั้งหมด
+app.get('/users', (req, res) => {
+   res.json(users);
+
+})
+//path: /user ใช้สำหรับสร้างข้อมูล user ใหม่
+
+app.post('/user', (req, res) => {
+    let user = req.body;
+    users.push(user);
+    res.json({
+        message: 'Create new user successfully',
+        user: user
+    });
+})
+
+
+app.listen(port, (req,res) => {
+    console.log('Http Server is running on port' + port)
+});
