@@ -1,35 +1,38 @@
+<<<<<<< HEAD
 @font-face{
-    font-family:'Kanit';
-    src: url('./Kanit/Kanit-Regular.ttf');
+    font-family: Kanit;
+    src: url('./Kanit/Kanit-Regular.ttf'); 
 }
-body{
-    font-family:'Kanit';
+body { 
+    background-color: rgb(240, 255, 244);
+    font-family: "Kanit";
 }
 .container{
     width: 100%;
-    max-width: 640px;
+    max-width: 640 px;
     margin-left: auto;
     margin-right: auto;
     background-color: azure;
-    padding: 20px;
-    box-sizing: border-box;
+    padding:  20px;
+    box-sizing:  border-box;
+    
 }
 .header{
     font-size: 30px;
-    text-align: center;
+    text-align:center;
     margin-bottom: 20px;
 }
 .header-form{
-   width: 140px;
+    width: 170px;
 }
 .flex{
-   display: flex;
+    display: flex;
 }
 .form-input{
     margin-bottom: 10px;
 }
-input.form, textarea {
-    border: 1px solid #ccc;
+input.form,textarea{
+    border: 1px solid gray;
     width: 100%;
 }
 .center{
@@ -37,16 +40,33 @@ input.form, textarea {
 }
 .button{
     border: 0;
-    width: 50%;
-    height: 40px;
+    width: 65%;
+    height: 30px;
+}
+.message{
+    margin-top: 20px;
+    padding: 10px;
+    background-color:lightgray;
+    display: none;
+}
+.message.success{
+    background-color : lightgreen;
+    display: block;
+}
+.message.danger {
+    background-color : lightcoral;
+    display: block;
 }
 
-@media screen and (max-width: 768px) {
-    .flex {
+@media screen and  (max-width : 768px){
+    .flex{
         flex-direction: column;
     }
     .header{
         font-size: 24px;
     }
-    
+    .button{
+        width: 100%;
+    }
 }
+
